@@ -1,0 +1,25 @@
+﻿<Window x:Class="CefSahrp_Test.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
+        Title="{Binding Title}" Height="350" Width="525" WindowState="Maximized" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+    <Grid>
+        <!--Address="https://zuotu.91maths.com/#W3sidHlwZSI6MCwiZXEiOiJ4XjIiLCJjb2xvciI6IiMwMDAwMDAifSx7InR5cGUiOjEwMDAsImdyaWQiOlsiMSIsIjEiXX1d"-->
+        <!--<cefSharp:ChromiumWebBrowser  Width="800" Height="800"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" x:Name="cef" Grid.Row="0"-->
+            <!--Address="www.baidu.com"                         
+            />-->
+        <InkCanvas IsHitTestVisible="True" Name="ink" >
+            <InkCanvas.Background>
+                <SolidColorBrush Opacity="0.035"
+                                     Color="Gray" />
+            </InkCanvas.Background>
+            <InkCanvas.Children>
+                <cefSharp:ChromiumWebBrowser MouseMove="cef_MouseMove" Width="800" Height="800"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" x:Name="cef" Grid.Row="0" Address="https://zuotu.91maths.com/#W3sidHlwZSI6MCwiZXEiOiJ4XjIiLCJjb2xvciI6IiMwMDAwMDAifSx7InR5cGUiOjEwMDAsImdyaWQiOlsiMSIsIjEiXX1d" />
+            </InkCanvas.Children>
+        </InkCanvas>
+     
+        <Button Name="btn" Click="Button_Click" Width="150" Height="25" HorizontalAlignment="Left" VerticalAlignment="Bottom"></Button>
+    </Grid>
+</Window>
