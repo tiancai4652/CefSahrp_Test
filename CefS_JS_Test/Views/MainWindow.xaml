@@ -6,13 +6,18 @@
         xmlns:wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
         xmlns:cef="clr-namespace:CefSharp;assembly=CefSharp.Core"
         xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
-        Title="{Binding Title}" Height="350" Width="525" >
+        Title="{Binding Title}" Height="350" Width="1000" WindowState="Maximized" Name="window">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5"></Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="25" />
+            <RowDefinition Height="AUTO" />
         </Grid.RowDefinitions>
         <Grid>
             <Grid.Resources>
@@ -40,7 +45,7 @@
         </Grid>
         <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="0,1">
             <wpf:ChromiumWebBrowser x:Name="Browser"
-                                    Address="https://www.BAIDU.com">
+                                    Address="https://github.com/cefsharp/CefSharp/wiki/General-Usage#1-how-do-you-call-a-javascript-method-from-net">
               
             </wpf:ChromiumWebBrowser>
         </Border>
@@ -74,8 +79,38 @@
             </StatusBarItem>
         </StatusBar>
         <Grid Grid.Row="3">
-            <StackPanel Orientation="Horizontal">
-                <Button Width="100" >javascript</Button>
+            <StackPanel Orientation="Vertical">
+                <GroupBox Header="Simple JS">
+                    <StackPanel Orientation="Horizontal">
+                        <Button Width="100" Click="Button_Click">JS</Button>
+
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="JS WITH RETURN">
+                    <WrapPanel Orientation="Horizontal">
+                        <Button Width="auto" Click="Button_Click_1">brower run js: 1+1</Button>
+                        <Button Width="auto" Click="Button_Click_2">MainFrame run js: 2+2</Button>
+                        <Button Width="auto" Click="Button_Click_3">FocusedFrame run js: 3+3</Button>
+                        <Button Width="auto" Click="Button_Click_7">获取宽高</Button>
+                        <Button Width="auto" Click="Button_Click_8">获取宽在UI线程执行</Button>
+                        <Button Width="auto" Click="Button_Click_9">返回数组</Button>
+                        <Button Width="auto" Click="Button_Click_10">返回数组,数组带内嵌结构</Button>
+                        <Button Width="auto" Click="Button_Click_11">返回数组,数组带内嵌结构,带Click Pointer</Button>
+                        <Button Width="auto" Click="Button_Click_12">找到按钮Click并执行</Button>
+                    </WrapPanel>
+                </GroupBox>
+                <GroupBox Header="JS IFFE ">
+                    <StackPanel Orientation="Horizontal">
+                        <Button Width="120" Click="Button_Click_4">brower run js: 1+1</Button>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="JS Promise ">
+                    <StackPanel Orientation="Horizontal">
+                        <Button Width="120" Click="Button_Click_5">等待一秒解析对象.</Button>
+                        <Button Width="120" Click="Button_Click_6">brower run js: 1+1</Button>
+                    </StackPanel>
+                </GroupBox>
+                
             </StackPanel>
         </Grid>
     </Grid>
