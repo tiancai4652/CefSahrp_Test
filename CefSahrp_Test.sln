@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CefSahrp_Test", "CefSahrp_Test\CefSahrp_Test.csproj", "{A619451D-121A-476D-B306-B532B68B8FBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CefSahrp_Test", "CefSahrp_Test\CefSahrp_Test.csproj", "{A619451D-121A-476D-B306-B532B68B8FBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CefS_JS_Test", "CefS_JS_Test\CefS_JS_Test.csproj", "{72100AB0-4534-4C0E-A571-88012DFDDD88}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{A619451D-121A-476D-B306-B532B68B8FBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A619451D-121A-476D-B306-B532B68B8FBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A619451D-121A-476D-B306-B532B68B8FBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72100AB0-4534-4C0E-A571-88012DFDDD88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72100AB0-4534-4C0E-A571-88012DFDDD88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72100AB0-4534-4C0E-A571-88012DFDDD88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72100AB0-4534-4C0E-A571-88012DFDDD88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
