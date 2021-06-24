@@ -149,7 +149,7 @@ namespace CefS_JS_Test.Views
             dynamic result = response.Result;
             for (int i = 0; i < result.Count; i++)
             {
-                msg += $"innerText:{result[i].innerText},href:{result[i].href}"+ " \\r\\n";
+                msg += $"innerText:{result[i].innerText},href:{result[i].href}"+ " "+@"\r\n";
             }
 
 
