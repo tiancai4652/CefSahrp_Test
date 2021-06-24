@@ -33,6 +33,8 @@ namespace CefS_JS_Test.Views
                     args.Frame.ExecuteJavaScriptAsync("alert('MainFrame finished loading');");
                 }
             };
+
+            //InitJSCallCSharp();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -218,6 +220,8 @@ namespace CefS_JS_Test.Views
                 Browser.ShowDevTools();
             }
         }
+
+      
     }
 
     public class RenderProcessMessageHandler : IRenderProcessMessageHandler
@@ -244,6 +248,7 @@ namespace CefS_JS_Test.Views
             const string script = "document.addEventListener('DOMContentLoaded', function(){ alert('DomLoaded'); });";
 
             frame.ExecuteJavaScriptAsync(script);
+
         }
     }
 }

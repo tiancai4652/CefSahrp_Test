@@ -78,40 +78,62 @@
                 </TextBlock>
             </StatusBarItem>
         </StatusBar>
-        <Grid Grid.Row="3">
-            <StackPanel Orientation="Vertical">
-                <GroupBox Header="Simple JS">
-                    <StackPanel Orientation="Horizontal">
-                        <Button Width="100" Click="Button_Click">JS</Button>
+        <TabControl Grid.Row="3">
+            <TabItem Header="How do you call a JavaScript method from .NET?">
+                <Grid >
+                    <StackPanel Orientation="Vertical">
+                        <GroupBox Header="Simple JS">
+                            <StackPanel Orientation="Horizontal">
+                                <Button Width="100" Click="Button_Click">JS</Button>
+
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Header="JS WITH RETURN">
+                            <WrapPanel Orientation="Horizontal">
+                                <Button Width="auto" Click="Button_Click_1">Brower run js: 1+1</Button>
+                                <Button Width="auto" Click="Button_Click_2">MainFrame run js: 2+2</Button>
+                                <Button Width="auto" Click="Button_Click_3">FocusedFrame run js: 3+3</Button>
+                                <Button Width="auto" Click="Button_Click_7">获取宽高</Button>
+                                <Button Width="auto" Click="Button_Click_8">获取宽在UI线程执行</Button>
+                                <Button Width="auto" Click="Button_Click_9">返回数组</Button>
+                                <Button Width="auto" Click="Button_Click_10">返回数组,数组带内嵌结构</Button>
+                                <Button Width="auto" Click="Button_Click_11">返回数组,数组带内嵌结构,带Click Pointer</Button>
+                                <Button Width="auto" Click="Button_Click_12">找到按钮Click并执行</Button>
+                            </WrapPanel>
+                        </GroupBox>
+                        <GroupBox Header="JS IFFE ">
+                            <StackPanel Orientation="Horizontal">
+                                <Button Width="120" Click="Button_Click_4">brower run js: 1+1</Button>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Header="JS Promise ">
+                            <StackPanel Orientation="Horizontal">
+                                <Button Width="120" Click="Button_Click_5">等待一秒解析对象.</Button>
+                                <Button Width="120" Click="Button_Click_6">brower run js: 1+1</Button>
+                            </StackPanel>
+                        </GroupBox>
 
                     </StackPanel>
-                </GroupBox>
-                <GroupBox Header="JS WITH RETURN">
-                    <WrapPanel Orientation="Horizontal">
-                        <Button Width="auto" Click="Button_Click_1">brower run js: 1+1</Button>
-                        <Button Width="auto" Click="Button_Click_2">MainFrame run js: 2+2</Button>
-                        <Button Width="auto" Click="Button_Click_3">FocusedFrame run js: 3+3</Button>
-                        <Button Width="auto" Click="Button_Click_7">获取宽高</Button>
-                        <Button Width="auto" Click="Button_Click_8">获取宽在UI线程执行</Button>
-                        <Button Width="auto" Click="Button_Click_9">返回数组</Button>
-                        <Button Width="auto" Click="Button_Click_10">返回数组,数组带内嵌结构</Button>
-                        <Button Width="auto" Click="Button_Click_11">返回数组,数组带内嵌结构,带Click Pointer</Button>
-                        <Button Width="auto" Click="Button_Click_12">找到按钮Click并执行</Button>
-                    </WrapPanel>
-                </GroupBox>
-                <GroupBox Header="JS IFFE ">
-                    <StackPanel Orientation="Horizontal">
-                        <Button Width="120" Click="Button_Click_4">brower run js: 1+1</Button>
+                </Grid>
+            </TabItem>
+            <TabItem Header="How do you call a JavaScript method that returns a result?">
+                <Grid >
+                    <StackPanel Orientation="Vertical">
+                        <GroupBox Header="JS Bound">
+                            <StackPanel Orientation="Horizontal">
+                                <Button Width="100" Click="Button_Click_14">JS</Button>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Header="Simple JS">
+                            <StackPanel Orientation="Horizontal">
+                                <Button Width="100" Click="Button_Click_13">JS</Button>
+                            </StackPanel>
+                        </GroupBox>
+                    
+
                     </StackPanel>
-                </GroupBox>
-                <GroupBox Header="JS Promise ">
-                    <StackPanel Orientation="Horizontal">
-                        <Button Width="120" Click="Button_Click_5">等待一秒解析对象.</Button>
-                        <Button Width="120" Click="Button_Click_6">brower run js: 1+1</Button>
-                    </StackPanel>
-                </GroupBox>
-                
-            </StackPanel>
-        </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
