@@ -6,7 +6,7 @@
         xmlns:wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
         xmlns:cef="clr-namespace:CefSharp;assembly=CefSharp.Core"
         xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
-        Title="{Binding Title}" Height="350" Width="1000" WindowState="Maximized" Name="window">
+        Title="{Binding Title}" Height="350" Width="1000" WindowState="Maximized" Name="window" KeyUp="window_KeyUp">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Margin" Value="5"></Setter>
@@ -45,7 +45,7 @@
         </Grid>
         <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="0,1">
             <wpf:ChromiumWebBrowser x:Name="Browser"
-                                    Address="https://github.com/cefsharp/CefSharp/wiki/General-Usage#1-how-do-you-call-a-javascript-method-from-net">
+                                    Address="www.baidu.com">
               
             </wpf:ChromiumWebBrowser>
         </Border>

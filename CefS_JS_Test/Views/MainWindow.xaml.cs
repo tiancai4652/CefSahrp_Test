@@ -43,6 +43,8 @@ namespace CefS_JS_Test.Views
         void Show(string msg)
         {
             Browser.ExecuteScriptAsync($"alert('{msg}');");
+            Browser.ExecuteScriptAsync($" console.info('{msg}');");
+           
             //Browser.ExecuteScriptAsync("alert('" + msg + "');");
         }
 
@@ -147,7 +149,7 @@ namespace CefS_JS_Test.Views
             dynamic result = response.Result;
             for (int i = 0; i < result.Count; i++)
             {
-                msg += $"innerText:{result[i].innerText},href:{result[i].href}"+Environment.NewLine;
+                msg += $"innerText:{result[i].innerText},href:{result[i].href}"+ " \\r\\n";
             }
 
 
@@ -206,6 +208,14 @@ namespace CefS_JS_Test.Views
             {
                 MessageBox.Show("should go to google,now go");
                 Browser.Address = "google.com";
+            }
+        }
+
+        private void window_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key.Equals(System.Windows.Input.Key.F12))
+            {
+                Browser.ShowDevTools();
             }
         }
     }
