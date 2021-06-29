@@ -1,4 +1,6 @@
-﻿using CefSharp;
+﻿using CefS_JS_Test.Base;
+using CefSharp;
+using CefSharp.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -14,6 +16,8 @@ namespace CefS_JS_Test.Views
         public MainWindow()
         {
             InitializeComponent();
+            //Browser.Address = System.Environment.CurrentDirectory+@"\formula\formula\index.html";
+            Browser.Address = @"http://10.73.35.30:8080/";
             Browser.RenderProcessMessageHandler = new RenderProcessMessageHandler();
             //Wait for the page to finish loading (all resources will have been loaded, rendering is likely still happening)
             Browser.LoadingStateChanged += (sender, args) =>
@@ -26,14 +30,13 @@ namespace CefS_JS_Test.Views
             };
             //Wait for the MainFrame to finish loading
             Browser.FrameLoadEnd += (sender, args) =>
-            {
+        {
                 //Wait for the MainFrame to finish loading
                 if (args.Frame.IsMain)
-                {
-                    args.Frame.ExecuteJavaScriptAsync("alert('MainFrame finished loading');");
-                }
-            };
-
+            {
+                args.Frame.ExecuteJavaScriptAsync("alert('MainFrame finished loading');");
+            }
+        };
             //InitJSCallCSharp();
         }
 
@@ -44,9 +47,12 @@ namespace CefS_JS_Test.Views
 
         void Show(string msg)
         {
-            Browser.ExecuteScriptAsync($"alert('{msg}');");
-            Browser.ExecuteScriptAsync($" console.info('{msg}');");
-           
+            if (!string.IsNullOrEmpty(msg))
+            {
+                Browser.ExecuteScriptAsync($"alert('{msg}');");
+                Browser.ExecuteScriptAsync($" console.info('{msg}');");
+            }
+
             //Browser.ExecuteScriptAsync("alert('" + msg + "');");
         }
 
@@ -248,6 +254,28 @@ namespace CefS_JS_Test.Views
             const string script = "document.addEventListener('DOMContentLoaded', function(){ alert('DomLoaded'); });";
 
             frame.ExecuteJavaScriptAsync(script);
+
+            //if (browser is ChromiumWebBrowser)
+            //{
+            //    var Browser = browser as ChromiumWebBrowser;
+            //    Browser.LoadingStateChanged += (sender, args) =>
+            //{
+            //    //Wait for the Page to finish loading
+            //    if (args.IsLoading == false)
+            //    {
+            //        Browser.ExecuteScriptAsync("alert('All Resources Have Loaded');");
+            //    }
+            //};
+            //    //Wait for the MainFrame to finish loading
+            //    Browser.FrameLoadEnd += (sender, args) =>
+            //{
+            //    //Wait for the MainFrame to finish loading
+            //    if (args.Frame.IsMain)
+            //    {
+            //        args.Frame.ExecuteJavaScriptAsync("alert('MainFrame finished loading');");
+            //    }
+            //};
+            //}
 
         }
     }

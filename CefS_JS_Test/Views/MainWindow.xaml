@@ -45,7 +45,8 @@
         </Grid>
         <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="0,1">
             <wpf:ChromiumWebBrowser x:Name="Browser"
-                                    Address="www.baidu.com">
+                                  
+                                    >
               
             </wpf:ChromiumWebBrowser>
         </Border>
@@ -131,6 +132,22 @@
                         </GroupBox>
                     
 
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Formula">
+                <Grid >
+                    <StackPanel Orientation="Vertical">
+                        <GroupBox Header="JS Bound">
+                            <StackPanel Orientation="Horizontal">
+                                <Button Width="100" Click="Button_Click_15">Formula</Button>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Header="Simple JS">
+                            <StackPanel Orientation="Horizontal">
+                                <Button Width="100" Click="Button_Click_16">Get Formula</Button>
+                            </StackPanel>
+                        </GroupBox>
                     </StackPanel>
                 </Grid>
             </TabItem>

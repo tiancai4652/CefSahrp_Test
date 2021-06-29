@@ -1,0 +1,21 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet type=text/css href=./static/mathquill/mathquill.css><script src=./static/mathquill/jquery-1.7.2.js></script><script src=./static/mathquill/mathquill.js></script><script type=text/javascript src="./library/Mathjax/MathJax.js?config=TeX-AMS-MML_SVG"></script><title>formula-editor</title><link href=./static/css/app.dbd845531a45d6fea275e14e0e7c675f.css rel=stylesheet></head><body><div id=app></div><script>//项目中全局引入mathjax所以需要先初始化屏蔽掉加载样式
+      MathJax.Hub.Config({
+        jax: ["input/TeX","input/MathML","output/SVG"],
+        tex2jax: {
+          inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+          displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+        },
+        TeX: {
+         extensions: ["mediawiki-texvc.js","AMSmath.js"]
+        },
+        "SVG": {
+          useFontCache:false,  //不使用use标签复用svg。理由：如果使用的话，会生成#shadow-root，无法正常保存DOM
+          linebreaks: {
+            automatic: true,
+            // width: "85%", // 不是100%。 因为页面有一部分padding值
+            width: "container" // 不是100%。 因为页面有一部分padding值
+          }
+        },
+        showProcessingMessages: false,
+        messageStyle: "none",
+      });</script><script type=text/javascript src=./static/js/manifest.3ad1d5771e9b13dbdad2.js></script><script type=text/javascript src=./static/js/vendor.e9ab0ab84e632ced5d10.js></script><script type=text/javascript src=./static/js/app.3da42210c504e527c641.js></script></body></html>

@@ -16,7 +16,7 @@ namespace CefS_JS_Test.Views
         {
 			//InAdvance立即注册
 			//For async object registration (equivalent to the old RegisterAsyncJsObject)
-			Browser.JavascriptObjectRepository.Register("boundAsync", new BoundObject(), BindingOptions.DefaultBinder);
+			Browser.JavascriptObjectRepository.Register("bound123", new BoundObject(), BindingOptions.DefaultBinder);
 
 			//WhenRequired在使用的时候才注册
 			Browser.JavascriptObjectRepository.ResolveObject += (sender, e) =>
@@ -47,15 +47,30 @@ namespace CefS_JS_Test.Views
 			};
 		}
 
+		internal void InitJSCallCSharpFormula()
+		{
+			//InAdvance立即注册
+			//For async object registration (equivalent to the old RegisterAsyncJsObject)
+			Browser.JavascriptObjectRepository.Register("JSCallCSObject", new JSCallSCObject(), BindingOptions.DefaultBinder);
 
-        private async void Button_Click_13(object sender, RoutedEventArgs e)
+            //注册成功通知
+            Browser.JavascriptObjectRepository.ObjectBoundInJavascript += (sender, e) =>
+            {
+                var name = e.ObjectName;
+
+                Debug.WriteLine($"Object {e.ObjectName} was bound successfully.");
+            };
+        }
+
+
+		private async void Button_Click_13(object sender, RoutedEventArgs e)
         {
             const string script = @"(async function()
 {
-			await CefSharp.BindObjectAsync('boundAsync');
+			await CefSharp.BindObjectAsync('bound123');
 
 	//The default is to camel case method names (the first letter of the method name is changed to lowercase)
-			boundAsync.add(16, 2).then(function(actualResult)
+			bound123.add(16, 2).then(function(actualResult)
 	{
 				const expectedResult = 18;
 				alert(actualResult);
@@ -65,10 +80,24 @@ namespace CefS_JS_Test.Views
             dynamic result = javascriptResponse.Result;
 		}
 
-        private void Button_Click_14(object sender, RoutedEventArgs e)
+		private async void Button_Click_16(object sender, RoutedEventArgs e)
+		{
+			string js = @"window.Formula_show('')";
+			JavascriptResponse response = await Browser.GetFocusedFrame().EvaluateScriptAsync(js);
+			dynamic result = response.Result;
+			Show(result.ToString());
+		}
+
+		private void Button_Click_14(object sender, RoutedEventArgs e)
         {
 			InitJSCallCSharp();
-
 		}
-    }
+
+		private void Button_Click_15(object sender, RoutedEventArgs e)
+		{
+			InitJSCallCSharpFormula();
+		}
+
+		
+	}
 }
