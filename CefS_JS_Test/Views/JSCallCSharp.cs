@@ -14,6 +14,7 @@ namespace CefS_JS_Test.Views
     {
         internal void InitJSCallCSharp()
         {
+			
 			//InAdvance立即注册
 			//For async object registration (equivalent to the old RegisterAsyncJsObject)
 			Browser.JavascriptObjectRepository.Register("bound123", new BoundObject(), BindingOptions.DefaultBinder);
@@ -49,9 +50,10 @@ namespace CefS_JS_Test.Views
 
 		internal void InitJSCallCSharpFormula()
 		{
+			JSCallSCObject = new JSCallSCObject();
 			//InAdvance立即注册
 			//For async object registration (equivalent to the old RegisterAsyncJsObject)
-			Browser.JavascriptObjectRepository.Register("JSCallCSObject", new JSCallSCObject(), BindingOptions.DefaultBinder);
+			Browser.JavascriptObjectRepository.Register("JSCallCSObject", JSCallSCObject, BindingOptions.DefaultBinder);
 
             //注册成功通知
             Browser.JavascriptObjectRepository.ObjectBoundInJavascript += (sender, e) =>
@@ -62,8 +64,9 @@ namespace CefS_JS_Test.Views
             };
         }
 
+        public JSCallSCObject JSCallSCObject { get; set; }
 
-		private async void Button_Click_13(object sender, RoutedEventArgs e)
+        private async void Button_Click_13(object sender, RoutedEventArgs e)
         {
             const string script = @"(async function()
 {
