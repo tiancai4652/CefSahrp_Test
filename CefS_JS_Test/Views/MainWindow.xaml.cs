@@ -3,6 +3,7 @@ using CefSharp;
 using CefSharp.Wpf;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -13,9 +14,11 @@ namespace CefS_JS_Test.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+        bool isFirst = true;
         public MainWindow()
         {
             InitializeComponent();
+            Browser.BrowserSettings.DefaultEncoding = "utf8";
             Browser.Address = System.Environment.CurrentDirectory + @"\formula\formula\index.html";
             //Browser.Address = @"http://10.73.35.30:8080/";
             Browser.RenderProcessMessageHandler = new RenderProcessMessageHandler();
@@ -34,7 +37,23 @@ namespace CefS_JS_Test.Views
                 //Wait for the MainFrame to finish loading
                 if (args.Frame.IsMain)
             {
-                args.Frame.ExecuteJavaScriptAsync("alert('MainFrame finished loading');");
+                if(isFirst)
+                { 
+                //args.Frame.ExecuteJavaScriptAsync("alert('MainFrame finished loading');");
+                string body = @"";
+                using (StreamReader sr = new StreamReader(@"C:\Users\Sam\Pictures\0.html"))
+                {
+                    string line;
+                    // 从文件读取并显示行，直到文件的末尾 
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        body += line;
+                    }
+                }
+                //body = "S";
+                Browser.GetMainFrame().LoadHtml(body,true);
+                    isFirst = false;
+                }
             }
         };
             //InitJSCallCSharp();
@@ -254,6 +273,8 @@ namespace CefS_JS_Test.Views
             const string script = "document.addEventListener('DOMContentLoaded', function(){ alert('DomLoaded'); });";
 
             frame.ExecuteJavaScriptAsync(script);
+
+
         }
     }
 }
