@@ -9,7 +9,7 @@ namespace Cef_Course_Test.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        string address = "http://10.73.69.46:8000/index.html?fileJson=https://mv.xesimg.com/XESlides/slidev2/slide_238629/1626168865100.json&env=3";
+        string address = "http://localhost/preview/index.html?fileJson=https://mv.xesimg.com/XESlides/slidev2/slide_238629/1626168865100.json&env=3";
 
         public MainWindow()
         {
@@ -49,27 +49,31 @@ namespace Cef_Course_Test.Views
             browser.JavascriptObjectRepository.Register("TestClass", t, BindingOptions.DefaultBinder);
         }
 
+        bool isCanComunicate = false;
+        int currentPageIndex = 0;
+        bool NextRunAnimationOrPage = false;
+        bool PreviousRunAnimationOrPage = false;
+
+
         private void ON_JsInvok(string msg)
-        
         {
-            //if (msg == "") return;
-            //serialize<jsInvokeData> ser = new serialize<jsInvokeData>();
-            //jsInvokeData invokData = ser.getJsonContract(msg);
-            //if (invokData.type == "loadComplete")
-            //{
-            //    setCaller(Config.getInstance().g_caller);
-            //    getSlideInfo();
-            //}
-            //else if (invokData.type == "currentPageIndexChanged")
-            //{
-            //    serialize<jsonData<PageIndexC>> ser2 = new serialize<jsonData<PageIndexC>>();
-            //    jsonData<PageIndexC> jsData = ser2.getJsonContract(msg);
-            //    if (m_currentPageIndex != jsData.data.pageIndex)
-            //    {
-            //        m_currentPageIndex = jsData.data.pageIndex;
-            //        d_currentPageIndexChanged(jsData.data.pageIndex);
-            //    }
-            //}
+            if (msg == "") return;
+            serialize<jsInvokeData> ser = new serialize<jsInvokeData>();
+            jsInvokeData invokData = ser.getJsonContract(msg);
+            if (invokData.type == "tplLoadComplete")
+            {
+                isCanComunicate = true;
+            }
+            else if (invokData.type == "currentPageIndexChanged")
+            {
+                serialize<jsonData<currentPageIndexChange>> ser2 = new serialize<jsonData<currentPageIndexChange>>();
+                jsonData<currentPageIndexChange> jsData = ser2.getJsonContract(msg);
+                if (currentPageIndex != jsData.data.currentPageIndex)
+                {
+                    currentPageIndex = jsData.data.currentPageIndex;
+                    //d_currentPageIndexChanged(jsData.data.pageIndex);
+                }
+            }
             //else if (invokData.type == "webScrollPositionChanged")
             //{
             //    serialize<jsonData<WebPositionC>> ser2 = new serialize<jsonData<WebPositionC>>();
@@ -90,24 +94,71 @@ namespace Cef_Course_Test.Views
             //    Config.getInstance().g_slideIsReady = true;
             //    createEmptyPage(m_slideInfo.totalPageNum);
             //}
-            //else if (invokData.type == "isLastAniamtion")
-            //{
-            //    serialize<jsonData<isLastAnimationC>> ser2 = new serialize<jsonData<isLastAnimationC>>();
-            //    jsonData<isLastAnimationC> jsData = ser2.getJsonContract(msg);
-            //    if (jsData.data.isLastAniamtion == true)
-            //    {
-            //        d_pageAnimationState(false, true);
-            //    }
-            //}
-            //else if (invokData.type == "isFirstAniamtion")
-            //{
-            //    serialize<jsonData<isLastAnimationC>> ser2 = new serialize<jsonData<isLastAnimationC>>();
-            //    jsonData<isLastAnimationC> jsData = ser2.getJsonContract(msg);
-            //    if (jsData.data.isFirstAniamtion == true)
-            //    {
-            //        d_pageAnimationState(true, false);
-            //    }
-            //}
+            else if (invokData.type == "isLastAniamtion")
+            {
+                serialize<jsonData<isLastAnimationC>> ser2 = new serialize<jsonData<isLastAnimationC>>();
+                jsonData<isLastAnimationC> jsData = ser2.getJsonContract(msg);
+                NextRunAnimationOrPage = !jsData.data.isLastAniamtion;
+            }
+            else if (invokData.type == "isFirstAniamtion")
+            {
+                serialize<jsonData<isLastAnimationC>> ser2 = new serialize<jsonData<isLastAnimationC>>();
+                jsonData<isLastAnimationC> jsData = ser2.getJsonContract(msg);
+                PreviousRunAnimationOrPage = !jsData.data.isFirstAniamtion;
+            }
+        }
+
+        private void Up_Click(object sender, RoutedEventArgs e)
+        {
+            if (currentPageIndex > 0 && isCanComunicate)
+            {
+                if (PreviousRunAnimationOrPage)
+                {
+                    PreviousAnimation();
+                }
+                else
+                {
+                    PreviousPage();
+                }
+            }
+        }
+
+        void NextAnimation()
+        {
+            browser.ExecuteScriptAsync("playNextAction()");
+        }
+
+        void NextPage()
+        {
+            browser.ExecuteScriptAsync($"setCurrentPage({currentPageIndex + 1})");
+        }
+
+        void PreviousAnimation()
+        {
+            browser.ExecuteScriptAsync("playPreviousAction()");
+        }
+
+        void PreviousPage()
+        {
+            if (currentPageIndex > 0)
+            {
+                browser.ExecuteScriptAsync($"setCurrentPage({currentPageIndex - 1})");
+            }
+        }
+
+        private void Down_Click(object sender, RoutedEventArgs e)
+        {
+            if (isCanComunicate)
+            {
+                if (NextRunAnimationOrPage)
+                {
+                    NextAnimation();
+                }
+                else
+                {
+                    NextPage();
+                }
+            }
         }
     }
 }

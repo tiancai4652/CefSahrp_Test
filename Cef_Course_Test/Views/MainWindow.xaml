@@ -6,9 +6,10 @@
         xmlns:wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
         xmlns:cef="clr-namespace:CefSharp;assembly=CefSharp.Core"
         Title="{Binding Title}" Height="350" Width="525" KeyUp="Window_KeyUp">
-    <wpf:ChromiumWebBrowser x:Name="browser" Address="{Binding Address}"
-                                  
-                                    >
-
-    </wpf:ChromiumWebBrowser>
+    <Grid>
+        <wpf:ChromiumWebBrowser x:Name="browser" Address="{Binding Address}">
+        </wpf:ChromiumWebBrowser>
+        <Button Width="150" Height="25" Margin="365,300,10,10" Name="Up" Click="Up_Click">Up</Button>
+        <Button Width="150" Height="25" Margin="10,300,365,10" Name="Down" Click="Down_Click">Down</Button>
+    </Grid>
 </Window>
