@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.31105.61
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CefSahrp_Test", "CefSahrp_Test\CefSahrp_Test.csproj", "{A619451D-121A-476D-B306-B532B68B8FBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CefS_JS_Test", "CefS_JS_Test\CefS_JS_Test.csproj", "{72100AB0-4534-4C0E-A571-88012DFDDD88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CefS_JS_Test", "CefS_JS_Test\CefS_JS_Test.csproj", "{72100AB0-4534-4C0E-A571-88012DFDDD88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cef_Course_Test", "Cef_Course_Test\Cef_Course_Test.csproj", "{2FF6B6F0-7406-48BA-A7B5-0E4616F36572}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{72100AB0-4534-4C0E-A571-88012DFDDD88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72100AB0-4534-4C0E-A571-88012DFDDD88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72100AB0-4534-4C0E-A571-88012DFDDD88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FF6B6F0-7406-48BA-A7B5-0E4616F36572}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FF6B6F0-7406-48BA-A7B5-0E4616F36572}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FF6B6F0-7406-48BA-A7B5-0E4616F36572}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FF6B6F0-7406-48BA-A7B5-0E4616F36572}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
