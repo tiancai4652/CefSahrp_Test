@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using CefSharp;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace CefSahrp_Test.Views
@@ -39,6 +40,11 @@ namespace CefSahrp_Test.Views
         private void cef_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
             cef.Focus();
+        }
+
+        private void btn2_Click(object sender, RoutedEventArgs e)
+        {
+            cef.ShowDevTools();
         }
     }
 }
