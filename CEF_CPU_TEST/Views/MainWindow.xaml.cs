@@ -46,10 +46,10 @@ namespace CEF_CPU_TEST.Views
                 Grid grid = item as Grid;
                 ChromiumWebBrowser chromiumWebBrowser = new ChromiumWebBrowser();
                 var browserSettings = new CefSharp.BrowserSettings();
-                browserSettings.WindowlessFrameRate = 30;
+                browserSettings.WindowlessFrameRate = 40;
                 chromiumWebBrowser.BrowserSettings = browserSettings;
                 chromiumWebBrowser.Address = "https://mv.xesimg.com/XESlides/jssdk/1.5.7/preview/index.html?fileJson=https://mv.xesimg.com/XESlides/slidev2/slide_175914/1622624173906.json";
-            grid.Children.Clear();
+                grid.Children.Clear();
                 grid.Children.Add(chromiumWebBrowser);
             }
         }

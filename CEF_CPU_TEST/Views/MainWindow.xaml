@@ -9,7 +9,7 @@
         <WrapPanel Name="wrap">
 
             <Grid Width="400" Height="400">
-                <cefSharp:ChromiumWebBrowser    Grid.Row="0" />
+                <cefSharp:ChromiumWebBrowser   Address="https://mv.xesimg.com/XESlides/jssdk/1.5.7/preview/index.html?fileJson=https://mv.xesimg.com/XESlides/slidev2/slide_175914/1622624173906.json" />
             </Grid>
             <Grid Width="400" Height="400">
                 <cefSharp:ChromiumWebBrowser    Grid.Row="0" Address="https://mv.xesimg.com/XESlides/jssdk/1.5.7/preview/index.html?fileJson=https://mv.xesimg.com/XESlides/slidev2/slide_175914/1622624173906.json" />

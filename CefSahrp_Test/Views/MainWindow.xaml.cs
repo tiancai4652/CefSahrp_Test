@@ -23,7 +23,7 @@ namespace CefSahrp_Test.Views
                 //btn.SetValue(Panel.ZIndexProperty, 2);
                 //cef.SetValue(Panel.ZIndexProperty, 1);
                 //ink.SetValue(Panel.ZIndexProperty, 0);
-                //ink.IsHitTestVisible = false;
+                ink.IsHitTestVisible = false;
             }
             else
             {
@@ -32,7 +32,7 @@ namespace CefSahrp_Test.Views
                 //btn.SetValue(Panel.ZIndexProperty, 2);
                 //ink.SetValue(Panel.ZIndexProperty, 1);
                 //cef.SetValue(Panel.ZIndexProperty, 0);
-                //ink.IsHitTestVisible = true;
+                ink.IsHitTestVisible = true;
             }
             isInkTop = !isInkTop;
         }
