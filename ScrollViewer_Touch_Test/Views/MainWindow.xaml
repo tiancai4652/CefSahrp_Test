@@ -1,0 +1,86 @@
+﻿<Window x:Class="ScrollViewer_Touch_Test.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="{Binding Title}" Height="350" Width="525" >
+    <Window.Resources>
+        <ResourceDictionary Source="/Resource/control.xaml">
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid
+                                        Name="gridCourseList"
+                                        Grid.Row="1"
+                                        HorizontalAlignment="Right"
+                                    >
+    
+        <ListBox 
+               >
+                <ListBox.Template>
+                    <ControlTemplate>
+                    <ScrollViewer Focusable="False" Template="{StaticResource MyScrollViewer}" CanContentScroll="True">
+                            <ItemsPresenter />
+                        </ScrollViewer>
+                    </ControlTemplate>
+                </ListBox.Template>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                   
+                    <StackPanel Orientation="Vertical" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBoxItem>
+                <Button Width="100" Height="100"></Button>
+            </ListBoxItem>
+            <ListBoxItem>
+                <Button Width="100" Height="100"></Button>
+            </ListBoxItem>
+            <ListBoxItem>
+                <Button Width="100" Height="100" Background="Red"></Button>
+            </ListBoxItem>
+            <ListBoxItem>
+                <Button Width="100" Height="100"></Button>
+            </ListBoxItem>
+            <ListBoxItem>
+                <Button Width="100" Height="100"></Button>
+            </ListBoxItem>
+            <ListBoxItem>
+                <Button Width="100" Height="100"></Button>
+            </ListBoxItem>
+            <ListBoxItem>
+                <Button Width="100" Height="100"></Button>
+            </ListBoxItem>
+            <ListBoxItem>
+                <Button Width="100" Height="100"></Button>
+            </ListBoxItem>
+            <ListBoxItem>
+                <Button Width="100" Height="100"></Button>
+            </ListBoxItem>
+            <ListBoxItem>
+                <Button Width="100" Height="100"></Button>
+            </ListBoxItem>
+            <ListBoxItem>
+                <Button Width="100" Height="100"></Button>
+            </ListBoxItem>
+            <ListBoxItem>
+                <Button Width="100" Height="100"></Button>
+            </ListBoxItem>
+            <ListBoxItem>
+                <Button Width="100" Height="100"></Button>
+            </ListBoxItem>
+            <ListBoxItem>
+                <Button Width="100" Height="100"></Button>
+            </ListBoxItem>
+            <ListBoxItem>
+                <Button Width="100" Height="100"></Button>
+            </ListBoxItem>
+            <ListBoxItem>
+                <Button Width="100" Height="100"></Button>
+            </ListBoxItem>
+            <ListBoxItem>
+                <Button Width="100" Height="100"></Button>
+            </ListBoxItem>
+        </ListBox>
+      
+    </Grid>
+</Window>
