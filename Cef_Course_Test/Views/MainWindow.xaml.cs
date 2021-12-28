@@ -1,5 +1,6 @@
 ﻿using Cef_Course_Test.Base;
 using CefSharp;
+using System;
 using System.Windows;
 
 namespace Cef_Course_Test.Views
@@ -9,7 +10,7 @@ namespace Cef_Course_Test.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        string address = "http://localhost/preview/index.html?fileJson=https://mv.xesimg.com/XESlides/slidev2/slide_238629/1626168865100.json&env=3";
+        string address = "https://liveclient.xesimg.com/XESlides/board/courseware/preview/index.html?fileJson=https://mv.xesimg.com/XESlides/slidev2/slide_266281/1632887022451.json";
 
         public MainWindow()
         {
@@ -20,14 +21,14 @@ namespace Cef_Course_Test.Views
             {
                 if (args.IsLoading == false)
                 {
-                  
+
                 }
             };
             browser.FrameLoadEnd += (sender, args) =>
             {
                 if (args.Frame.IsMain)
                 {
-                  
+
                 }
             };
             InitJS();
@@ -39,8 +40,35 @@ namespace Cef_Course_Test.Views
             if (e.Key.Equals(System.Windows.Input.Key.F12))
             {
                 browser.ShowDevTools();
+                //var client = browser.GetDevToolsClient();
+                //client.DevToolsEvent += XXHandler;
+              
+                eventHandler = new EventHandler<ConsoleMessageEventArgs>((object? sender, ConsoleMessageEventArgs e) => 
+                {
+                    System.Diagnostics.Debug.WriteLine($"sender:{sender}"+Environment.NewLine+$"e:{e.Message}");
+                });
+                //browser.ConsoleMessage += eventHandler;
+
+                //browser.JavascriptMessageReceived +=  new EventHandler<JavascriptMessageReceivedEventArgs>((object? sender, JavascriptMessageReceivedEventArgs e) =>
+                //{
+                //    System.Diagnostics.Debug.WriteLine($"sender:{sender}" + Environment.NewLine + $"e:{e.Message}");
+                //});
+
+                //browser.FrameLoadEnd += new EventHandler<FrameLoadEndEventArgs>((object? sender, FrameLoadEndEventArgs e) =>
+                //{
+                //    System.Diagnostics.Debug.WriteLine($"sender:{sender}" + Environment.NewLine /*+ $"e:{e.Message}"*/);
+                //});
+
+                browser.LoadingStateChanged += new EventHandler<LoadingStateChangedEventArgs>((object? sender, LoadingStateChangedEventArgs e) =>
+                {
+                    System.Diagnostics.Debug.WriteLine($"sender:{sender}" + Environment.NewLine + $"e:{e.IsLoading}");
+                });
+
+
             }
         }
+
+        EventHandler<ConsoleMessageEventArgs> eventHandler;
 
         void InitJS()
         {
