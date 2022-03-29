@@ -5,6 +5,18 @@
         prism:ViewModelLocator.AutoWireViewModel="True"
         Title="{Binding Title}" Height="350" Width="525">
     <Grid>
-        <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Image Source="{Binding Thumbnail}" Stretch="Fill" Grid.Row="0" Grid.Column="0"  HorizontalAlignment="Left"></Image>
+        <Button Width="100" Height="25" Command="{Binding PaintingCommand}" Grid.Row="1" Grid.Column="1" ></Button>
+        <Grid Grid.Row="0" Grid.Column="1" Background="Red"></Grid>
+        <Grid Grid.Row="1" Grid.Column="0" Background="Blue"></Grid>
     </Grid>
 </Window>
