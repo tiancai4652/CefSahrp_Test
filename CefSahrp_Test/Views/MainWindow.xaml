@@ -7,10 +7,10 @@
         Title="{Binding Title}" Height="350" Width="525" WindowState="Maximized" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
     <Grid>
         <!--Address="https://zuotu.91maths.com/#W3sidHlwZSI6MCwiZXEiOiJ4XjIiLCJjb2xvciI6IiMwMDAwMDAifSx7InR5cGUiOjEwMDAsImdyaWQiOlsiMSIsIjEiXX1d"-->
-        <cefSharp:ChromiumWebBrowser Address="https://mv.xesimg.com/XESlides/jssdk/1.5.7/preview/index.html?fileJson=https://mv.xesimg.com/XESlides/slidev2/slide_175914/1622624173906.json" Background="Red"  Width="800" Height="800"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" x:Name="cef" Grid.Row="0"/>
+        <cefSharp:ChromiumWebBrowser  Address="https://mv.xesimg.com/XESlides/jssdk/1.5.7/preview/index.html?fileJson=https://mv.xesimg.com/XESlides/slidev2/slide_175914/1622624173906.json" Background="Red"  Width="800" Height="800"  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" x:Name="cef" Grid.Row="0"/>
         <!--Address="www.baidu.com"                         
             />-->
-        <InkCanvas IsHitTestVisible="True" Name="ink" >
+        <InkCanvas IsHitTestVisible="True" Name="ink" EditingMode="None">
             <InkCanvas.Background>
                 <SolidColorBrush Opacity="0.035"
                                      Color="Gray" />

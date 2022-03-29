@@ -12,6 +12,7 @@ namespace CefSahrp_Test.Views
         public MainWindow()
         {
             InitializeComponent();
+            cef.Address = "http://kjdsfz-cdn.jiaoyanyun.com/webkjdsfiles/f4b9fcefc3ba4454826b87313321217f/index.html?id=63d00010caeb4dcaa7a8faef3660e642&line=off&pageCount=13&env=37&pageHideFilter=1";
         }
 
         bool isInkTop = false;
