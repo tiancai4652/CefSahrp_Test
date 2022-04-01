@@ -62,11 +62,13 @@ namespace ImageBindingTest.ViewModels
                 System.Drawing.Image img = System.Drawing.Image.FromStream(memoryStream);
 
 
-                var randomStr = Guid.NewGuid().ToString("N");
-                var dir = tempPath + "\\output";
-                var pathX = dir + "\\" + randomStr + ".jpg";
-                img.Save(pathX);
-                Thumbnail = new BitmapImage(new Uri(pathX, UriKind.Absolute));
+                //var randomStr = Guid.NewGuid().ToString("N");
+                //var dir = tempPath + "\\output";
+                //var pathX = dir + "\\" + randomStr + ".jpg";
+                //img.Save(pathX);
+                //Thumbnail = new BitmapImage(new Uri(pathX, UriKind.Absolute));
+
+                Thumbnail = BitmapFrame.Create(memoryStream, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
 
 
                 memoryStream.Close();
