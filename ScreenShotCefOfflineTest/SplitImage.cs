@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -122,6 +123,9 @@ namespace ScreenShotCefOfflineTest
         {
             MemoryStream ms = new MemoryStream(buffer);
             Image image = System.Drawing.Image.FromStream(ms);
+
+
+          
             return image;
         }
 
@@ -139,6 +143,31 @@ namespace ScreenShotCefOfflineTest
             }
 
             return images;
+        }
+
+        public List<ImageSource> GetImageSources(byte[] bytes)
+        {
+            var image = BytesToImage(bytes);
+            List<ImageSource> images = new List<ImageSource>();
+            int x = 0;
+            int y = 0;
+            for (int i = 0; i < Count; i++)
+            {
+                Image newBitmapSource = CropImage(image, new Rectangle(0, y, WidthOnePage, HeightOnePage));
+                MemoryStream memoryStream = null;
+                newBitmapSource.Save(memoryStream, ImageFormat.Bmp);
+                images.Add(ToImageSource(memoryStream));
+                memoryStream.Close();
+                y += HeightOnePage;
+            }
+
+            return images;
+        }
+
+        public static ImageSource ToImageSource(MemoryStream stream)
+        {
+            var bitmap = new Bitmap(stream);
+            return Imaging.CreateBitmapSourceFromHBitmap(bitmap.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
         }
     }
 }
