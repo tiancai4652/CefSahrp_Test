@@ -33,7 +33,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CefsharpScreenshot", "Cefsh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenShotCefOfflineTest", "ScreenShotCefOfflineTest\ScreenShotCefOfflineTest.csproj", "{AFB757D5-6FB9-450E-9C99-BE93201CFF84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenShotCefOfflineTest_OldVersion", "ConsoleApp1\ScreenShotCefOfflineTest_OldVersion.csproj", "{E3904934-29C0-481C-BA61-FEDEEF0D53B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScreenShotCefOfflineTest_Cef90.6.70Version", "ConsoleApp1\ScreenShotCefOfflineTest_Cef90.6.70Version.csproj", "{E3904934-29C0-481C-BA61-FEDEEF0D53B8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "截图", "截图", "{5671DBD1-5DBE-4A37-97F7-7C0E13F28CAD}"
 EndProject
