@@ -1,0 +1,23 @@
+﻿<Window x:Class="WPFCef.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+          xmlns:cefSharp="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
+        Title="{Binding Title}" Height="350" Width="525">
+    <Grid>
+        <TabControl>
+            <TabItem>
+                <cefSharp:ChromiumWebBrowser ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" x:Name="browser" Grid.Row="0"  />
+            </TabItem>
+            <TabItem>
+                <cefSharp:ChromiumWebBrowser ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" x:Name="browser2" Grid.Row="0"  />
+            </TabItem>
+            <TabItem>
+                <Image Name="image" ></Image>
+            </TabItem>
+        </TabControl>
+      
+        <Button Width="100" Height="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Button_Click"/>
+    </Grid>
+</Window>
