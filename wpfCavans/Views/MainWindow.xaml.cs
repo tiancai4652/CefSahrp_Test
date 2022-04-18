@@ -21,24 +21,24 @@ namespace wpfCavans.Views
         void Init()
         {
             windowsFormsHost = new WindowsFormsHost();
-            windowsFormsHost.Width = 500;
-            windowsFormsHost.Height = 500;
+            //windowsFormsHost.Width = 500;
+            //windowsFormsHost.Height = 500;
             Form1 mainform = new Form1();
             mainform.TopLevel = false;
             windowsFormsHost.Child = mainform;
-            ink.Children.Add(windowsFormsHost);
+            grid.Children.Insert(0, windowsFormsHost);
         }
 
-        int left = 0;
-        int top = 0;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var grid = new Grid() { Width = 100, Height = 100, Background = new System.Windows.Media.SolidColorBrush(Colors.Red) };
-            ink.Children.Add(grid);
-            InkCanvas.SetLeft(grid, left);
-            InkCanvas.SetTop(grid, top);
-            left += 100;
-            top += 100;
+            Window1 window1 = new Window1();
+            window1.Owner = this;
+            window1.ShowDialog();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

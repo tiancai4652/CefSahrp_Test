@@ -21,11 +21,11 @@ namespace Winform_cef
 
             string page = @"http://kjdsfz-cdn.jiaoyanyun.com/webkjdsfiles/689951990cac47c39313accff84d7d02/index.html?id=09d6776c89f94b4dbc1fa361e7a9790f&line=off&pageCount=3&env=37&pageHideFilter=1";
 
-            var settings = new CefSettings();
-            settings.CefCommandLineArgs.Add("disable-gpu"); // Disable GPU acceleration
-            settings.CefCommandLineArgs.Add("disable-gpu-vsync"); //Disable GPU vsync
+            //var settings = new CefSettings();
+            //settings.CefCommandLineArgs.Add("disable-gpu"); // Disable GPU acceleration
+            //settings.CefCommandLineArgs.Add("disable-gpu-vsync"); //Disable GPU vsync
 
-            Cef.Initialize(settings);
+            //Cef.Initialize(settings);
 
             chromeBrowser = new ChromiumWebBrowser(page);
 

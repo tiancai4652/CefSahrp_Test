@@ -1,0 +1,21 @@
+﻿<Window x:Class="wpfCavans.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:wpfCavans"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800" WindowStyle="None" Background="Transparent" AllowsTransparency="True" WindowState="Maximized" >
+    <Grid>
+        <Grid>
+            <InkCanvas EditingMode="Ink" Name="ink" >
+                <InkCanvas.Background >
+                    <SolidColorBrush Opacity="0.002" Color="Gray" />
+                </InkCanvas.Background>
+            </InkCanvas>
+            <Button Width="100" Height="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Button_Click">add element</Button>
+            <Button Width="100" Height="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Button_Click1" Margin="0,0,294,-0.4">ink</Button>
+            <Button Width="100" Height="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Button_Click2" Margin="0,0,137,-0.4">select</Button>
+        </Grid>
+    </Grid>
+</Window>
