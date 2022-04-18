@@ -19,7 +19,7 @@ namespace Winform_cef
         {
             InitializeComponent();
 
-            string page =  @"http://10.14.144.210:8005/?fileJson=https://static0-test.xesimg.com/xeslidev3/course/146836671411781962/pro/146836671411781962_1649210491665.json&env=6";
+            string page = @"http://kjdsfz-cdn.jiaoyanyun.com/webkjdsfiles/689951990cac47c39313accff84d7d02/index.html?id=09d6776c89f94b4dbc1fa361e7a9790f&line=off&pageCount=3&env=37&pageHideFilter=1";
 
             var settings = new CefSettings();
             settings.CefCommandLineArgs.Add("disable-gpu"); // Disable GPU acceleration
