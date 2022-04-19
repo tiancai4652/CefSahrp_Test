@@ -28,7 +28,7 @@ namespace ConsoleApp1
         public string Url { get; set; }
         public ChromiumWebBrowser Browser { get; set; }
         public int LoadingTimeMs { get; set; } = 500;
-        public bool IsSaveImage { get; set; } = false;
+        public static bool IsSaveImage { get; set; } = false;
 
         public void Start()
         {
@@ -86,15 +86,33 @@ namespace ConsoleApp1
 
                         await Task.Factory.StartNew(async () =>
                         {
-                            await Task.Delay(LoadingTimeMs);
-                            Bitmap bitmap = await Browser.ScreenshotAsync(true);
-                          
+                            //await Task.Delay(LoadingTimeMs);
+                            //Bitmap bitmap = await Browser.ScreenshotAsync(true);
+                            byte[] buffer = null;
+                            using (var devToolsClient = Browser.GetDevToolsClient())
+                            {
+                                //Get the content size
+                                var layoutMetricsResponse = await devToolsClient.Page.GetLayoutMetricsAsync();
+                                var contentSize = layoutMetricsResponse.ContentSize;
+
+                                var viewPort = new Viewport()
+                                {
+                                    Height = getThumbnailClass.height* getThumbnailClass.thumbLen,
+                                    Width = getThumbnailClass.width,
+                                    X = 0,
+                                    Y = 0,
+                                    Scale = 1
+                                };
+
+                                // https://bugs.chromium.org/p/chromium/issues/detail?id=1198576#c17
+                                var result = await devToolsClient.Page.CaptureScreenshotAsync(clip: viewPort, fromSurface: true, captureBeyondViewport: true);
+
+                                buffer= result.Data;
+                            }
+
                             SplitImage splitImage = new SplitImage(getThumbnailClass.thumbLen, getThumbnailClass.width, getThumbnailClass.height);
 
-                            MemoryStream ms = new MemoryStream();
-                            bitmap.Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
-                            byte[] buffer = ms.GetBuffer();  
-                            ms.Close();
+                        
 
                             if (GetImageAction != null)
                             {
@@ -109,7 +127,12 @@ namespace ConsoleApp1
                                     var name = i++.ToString() + ".png";
                                     t.Save(name);
                                 });
-                                bitmap.Save(imgName);
+                                using (MemoryStream ms = new MemoryStream(buffer))
+                                {
+                                    Image outputImg = Image.FromStream(ms);
+                                    outputImg.Save(imgName);
+                                }
+                                //bitmap.Save(imgName);
                                 Process.Start(imgName);
                             }
                         });

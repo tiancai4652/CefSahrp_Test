@@ -14,6 +14,7 @@ namespace ConsoleApp1
     {
         static async Task Main(string[] args)
         {
+            CefGetScreenShot.IsSaveImage = true;
             CefGetScreenShot cefGetScreenShot = new CefGetScreenShot(
                 "http://10.14.144.210:8005/?fileJson=https://static0-test.xesimg.com/xeslidev3/course/146836671411781962/pro/146836671411781962_1649210491665.json&env=6"
                 );
