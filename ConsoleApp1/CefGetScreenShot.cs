@@ -38,7 +38,7 @@ namespace ConsoleApp1
                 var b = (ChromiumWebBrowser)s;
                 if (argsi.Frame.IsMain)
                 {
-                    Browser.Size = new System.Drawing.Size(960, 7200);
+                    //Browser.Size = new System.Drawing.Size(960, 7200);
                 }
             };
             InitJS();
@@ -54,6 +54,10 @@ namespace ConsoleApp1
             Browser.JavascriptObjectRepository.Register("cefClass", t, false, BindingOptions.DefaultBinder);
         }
 
+        int totalCount = 0;
+        int current = 0;
+        bool isFirst = true;
+
         async void ON_JsInvok(string msg)
         {
             if (msg == "") return;
@@ -64,41 +68,48 @@ namespace ConsoleApp1
             {
                 if (Browser.CanExecuteJavascriptInMainFrame)
                 {
-                    GetThumbnail();
+                    GetThumbnailTotal();
                 }
             }
             if (invokData.type == "getThumbnail")
             {
+
                 if (Browser.CanExecuteJavascriptInMainFrame)
                 {
-                    string imgName = "CefSharp_screenshot" + DateTime.Now.Ticks + ".jpg";
-                    try
+
+                    var b = true;
+                    if (b)
                     {
-                        getThumbnailClass getThumbnailClass = JsonConvert.DeserializeObject<getThumbnailClass>(msg);
+                        //网页截图保存地址
+                        string imgName = "CefSharp_screenshot" + current + ".jpg";
 
-                        Browser.Size = new System.Drawing.Size(getThumbnailClass.width, getThumbnailClass.height * getThumbnailClass.thumbLen);
-
-                        var cefbrowserHost = Browser.GetBrowserHost();
-
-                        cefbrowserHost.Invalidate(PaintElementType.View);
-
-                        Console.WriteLine("截图...");
-
-                        await Task.Factory.StartNew(async () =>
+                        try
                         {
-                            //await Task.Delay(LoadingTimeMs);
-                            //Bitmap bitmap = await Browser.ScreenshotAsync(true);
+                            getThumbnailClass getThumbnailClass = JsonConvert.DeserializeObject<getThumbnailClass>(msg);
+                            if(isFirst)
+                            {
+                                isFirst = false;
+                                totalCount = getThumbnailClass.thumbLen;
+                                if (current + 1 != totalCount)
+                                {
+                                    GetThumbnail();
+                                }
+                                return;
+                            }
+                            //var cefbrowserHost = Browser.GetBrowserHost();
+
+                            //cefbrowserHost.Invalidate(PaintElementType.View);
+
                             byte[] buffer = null;
                             using (var devToolsClient = Browser.GetDevToolsClient())
                             {
-                                //Get the content size
                                 var layoutMetricsResponse = await devToolsClient.Page.GetLayoutMetricsAsync();
                                 var contentSize = layoutMetricsResponse.ContentSize;
 
                                 var viewPort = new Viewport()
                                 {
-                                    Height = getThumbnailClass.height* getThumbnailClass.thumbLen,
-                                    Width = getThumbnailClass.width,
+                                    Height = contentSize.Height,
+                                    Width = contentSize.Width,
                                     X = 0,
                                     Y = 0,
                                     Scale = 1
@@ -107,49 +118,63 @@ namespace ConsoleApp1
                                 // https://bugs.chromium.org/p/chromium/issues/detail?id=1198576#c17
                                 var result = await devToolsClient.Page.CaptureScreenshotAsync(clip: viewPort, fromSurface: true, captureBeyondViewport: true);
 
-                                buffer= result.Data;
+                                buffer = result.Data;
                             }
 
-                            SplitImage splitImage = new SplitImage(getThumbnailClass.thumbLen, getThumbnailClass.width, getThumbnailClass.height);
+                            System.IO.File.WriteAllBytes(imgName, buffer);
+                            Console.WriteLine("截图保存完成");
+                            //Process.Start(imgName);
 
-                        
-
-                            if (GetImageAction != null)
+                            if (current + 1 != totalCount)
                             {
-                                GetImageAction.Invoke(splitImage.GetImageSources(buffer));
+                                current++;
+                                GetThumbnail();
                             }
-                            if (IsSaveImage)
+                            else
                             {
-                                var list = splitImage.GetImages(buffer);
-                                int i = 0;
-                                list.ForEach(t =>
-                                {
-                                    var name = i++.ToString() + ".png";
-                                    t.Save(name);
-                                });
-                                using (MemoryStream ms = new MemoryStream(buffer))
-                                {
-                                    Image outputImg = Image.FromStream(ms);
-                                    outputImg.Save(imgName);
-                                }
-                                //bitmap.Save(imgName);
-                                Process.Start(imgName);
+
                             }
-                        });
+                            //if (GetImageAction != null)
+                            //{
+                            //    GetImageAction.Invoke(imgName);
+                            //}
 
-                      
 
-                    }
-                    catch (Exception ex)
-                    {
-                        string exmsg = ex.Message;
-                        Console.WriteLine("截图异常：" + exmsg);
+                            //SplitImage splitImage = new SplitImage(getThumbnailClass.thumbLen, getThumbnailClass.width, getThumbnailClass.height);
+                            ////var list= splitImage.GetBitmapSources(buffer);
+
+                            ////int i = 0;
+                            ////list.ForEach(t =>
+                            ////{
+                            ////    var name = i++.ToString()+".png";
+                            ////    SaveImageToFile(t,name);
+                            ////});
+
+                            //var list = splitImage.GetImages(buffer);
+
+                            //int i = 0;
+                            //list.ForEach(t =>
+                            //{
+                            //    var name = i++.ToString() + ".png";
+                            //    t.Save(name);
+                            //});
+
+
+
+                            //Process.Start(imgName);
+                        }
+                        catch (Exception ex)
+                        {
+                            string exmsg = ex.Message;
+                            Console.WriteLine("截图异常：" + exmsg);
+                        }
+
                     }
                 }
             }
         }
 
-       
+
         /// <summary>
         /// 保存图片到文件
         /// </summary>
@@ -167,6 +192,15 @@ namespace ConsoleApp1
         }
 
         void GetThumbnail()
+        {
+            if (Browser.CanExecuteJavascriptInMainFrame)
+            {
+                //var task = await Browser.EvaluateScriptAsPromiseAsync("getThumbnail()" 
+                ValidAndExcute("getThumbnail", $"{current},{current}");
+            }
+        }
+
+        void GetThumbnailTotal()
         {
             if (Browser.CanExecuteJavascriptInMainFrame)
             {

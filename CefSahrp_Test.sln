@@ -51,6 +51,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PipeTest", "PipeTest\PipeTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wpfCavans", "wpfCavans\wpfCavans.csproj", "{C2E9EB41-C784-48D8-B719-834DDBA057BC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Temp", "Temp", "{F7928B6C-F472-4965-8C20-B2FE9DE200E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMultiStart", "TestMultiStart\TestMultiStart.csproj", "{4676A393-307E-482D-83C1-92972E8E63B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -133,6 +137,10 @@ Global
 		{C2E9EB41-C784-48D8-B719-834DDBA057BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2E9EB41-C784-48D8-B719-834DDBA057BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2E9EB41-C784-48D8-B719-834DDBA057BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4676A393-307E-482D-83C1-92972E8E63B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4676A393-307E-482D-83C1-92972E8E63B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4676A393-307E-482D-83C1-92972E8E63B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4676A393-307E-482D-83C1-92972E8E63B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -147,6 +155,7 @@ Global
 		{6BFE8E88-F09C-46C7-A1EB-65FB2176C37C} = {36493CCE-55EA-49AC-B9D5-B3FC5FF57BE4}
 		{19A2C3B4-8164-4018-8E0A-E0AD1D303E00} = {6BFE8E88-F09C-46C7-A1EB-65FB2176C37C}
 		{C2E9EB41-C784-48D8-B719-834DDBA057BC} = {7422B704-094B-4863-8E53-9976875EAD5D}
+		{4676A393-307E-482D-83C1-92972E8E63B6} = {F7928B6C-F472-4965-8C20-B2FE9DE200E4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DBF401C5-5D0C-4FFE-A260-F7B4547E1F6A}

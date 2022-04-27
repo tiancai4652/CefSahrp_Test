@@ -15,7 +15,7 @@ namespace ScreenShotCefOfflineTest
         static async Task Main(string[] args)
         {
             CefGetScreenShot cefGetScreenShot = new CefGetScreenShot(
-                "http://10.14.144.210:8005/?fileJson=https://static0-test.xesimg.com/xeslidev3/course/146836671411781962/pro/146836671411781962_1649210491665.json&env=6"
+                "http://10.14.144.210:8005/?fileJson=https://file1.jiaoyanyun.com/course/158769290399450723/pro/158769290399450723_1650348587877.json&env=6&isTest=false&slide3=true"
                 );
             cefGetScreenShot.Start();
 
