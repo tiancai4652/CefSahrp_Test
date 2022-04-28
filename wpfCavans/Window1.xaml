@@ -10,7 +10,7 @@
         <Grid>
             <InkCanvas EditingMode="Ink" Name="ink" >
                 <InkCanvas.Background >
-                    <SolidColorBrush Opacity="0.002" Color="Gray" />
+                    <SolidColorBrush Opacity="0.0019" Color="Gray" />
                 </InkCanvas.Background>
             </InkCanvas>
             <Button Width="100" Height="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Button_Click">add element</Button>

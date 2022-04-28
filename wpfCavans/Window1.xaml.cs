@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -8,6 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
@@ -19,9 +21,20 @@ namespace wpfCavans
     /// </summary>
     public partial class Window1 : Window
     {
+        private const int WS_EX_TRANSPARENT = 0x20;
+
+        private const int GWL_EXSTYLE = -20;
+
+        [DllImport("user32", EntryPoint = "SetWindowLong")]
+        private static extern uint SetWindowLong(IntPtr hwnd, int nIndex, uint dwNewLong);
+
+        [DllImport("user32", EntryPoint = "GetWindowLong")]
+        private static extern uint GetWindowLong(IntPtr hwnd, int nIndex);
+
         public Window1()
         {
             InitializeComponent();
+
         }
         int left = 0;
         int top = 0;
@@ -37,12 +50,18 @@ namespace wpfCavans
 
         private void Button_Click1(object sender, RoutedEventArgs e)
         {
-            ink.EditingMode = InkCanvasEditingMode.Ink; 
+            ink.EditingMode = InkCanvasEditingMode.Ink;
+            ink.IsHitTestVisible = true;
+            ink.Background = new SolidColorBrush(Colors.Gray) { Opacity=0.002};
+            //this.IsHitTestVisible = true;
         }
 
         private void Button_Click2(object sender, RoutedEventArgs e)
         {
             ink.EditingMode = InkCanvasEditingMode.None;
+            ink.IsHitTestVisible = false;
+            ink.Background = new SolidColorBrush(Colors.Gray) { Opacity = 0.0019 };
+            //this.IsHitTestVisible = false;
         }
     }
 }

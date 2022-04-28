@@ -8,7 +8,15 @@
     <Grid>
         <TabControl>
             <TabItem>
+                <Grid>
                 <cefSharp:ChromiumWebBrowser ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" x:Name="browser" Grid.Row="0"  />
+                    <InkCanvas EditingMode="None" IsHitTestVisible="False">
+                        <InkCanvas.Background>
+                            <SolidColorBrush Opacity="0"
+                                     Color="Gray" />
+                        </InkCanvas.Background>
+                    </InkCanvas>
+                </Grid>
             </TabItem>
             <TabItem>
                 <cefSharp:ChromiumWebBrowser ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" x:Name="browser2" Grid.Row="0"  />

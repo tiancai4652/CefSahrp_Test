@@ -33,7 +33,8 @@ namespace wpfCavans.Views
         {
             Window1 window1 = new Window1();
             window1.Owner = this;
-            window1.ShowDialog();
+            window1.Topmost = true;
+            window1.Show();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
