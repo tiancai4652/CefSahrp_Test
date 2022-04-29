@@ -12,6 +12,6 @@
         <Grid x:Name="grid">
             <InkCanvas EditingMode="None" Grid.Row="0"></InkCanvas>
         </Grid>
-        <Button Grid.Row="1" Width="100" Height="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Button_Click"></Button>
+        <Button Grid.Row="1" Width="227" Height="100" HorizontalAlignment="Left" VerticalAlignment="Center" Click="Button_Click" Margin="298,0,0,0">展示InkCavans层</Button>
     </Grid>
 </Window>

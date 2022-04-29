@@ -13,9 +13,9 @@
                     <SolidColorBrush Opacity="0.0019" Color="Gray" />
                 </InkCanvas.Background>
             </InkCanvas>
-            <Button Width="100" Height="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Button_Click">add element</Button>
-            <Button Width="100" Height="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Button_Click1" Margin="0,0,294,-0.4">ink</Button>
-            <Button Width="100" Height="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Button_Click2" Margin="0,0,137,-0.4">select</Button>
+            <Button Width="100" Height="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Button_Click">add Element</Button>
+            <Button Width="100" Height="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Button_Click1" Margin="0,0,294,-0.4">ink Mode</Button>
+            <Button Width="100" Height="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Click="Button_Click2" Margin="0,0,137,-0.4">select Mode</Button>
         </Grid>
     </Grid>
 </Window>

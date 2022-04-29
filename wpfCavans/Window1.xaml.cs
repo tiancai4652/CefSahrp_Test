@@ -34,6 +34,8 @@ namespace wpfCavans
         public Window1()
         {
             InitializeComponent();
+            var a = ink.DefaultDrawingAttributes;
+            a.Color = Colors.Red;
 
         }
         int left = 0;
